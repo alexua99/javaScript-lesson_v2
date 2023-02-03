@@ -7,7 +7,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const mode = require('gulp-mode')();
 const minCss = require('gulp-clean-css');
 
-//const del = require('del');
+ const del = require('del');
 
 
 function html(){
@@ -31,10 +31,10 @@ function gulpWatch(){
 
 //function img() {}
 
-// зробити функцю яка видаляє папку dist
-// function clean(){
-//   return del(['dist/*/'])
-// }
+//зробити функцю яка видаляє папку dist
+function clean(){
+  return del(['./dist'])
+}
 
-exports.dev = parallel( style, html, gulpWatch)
+exports.dev = parallel(clean, style, html, gulpWatch)
 exports.build = parallel( style, html)
